@@ -7,6 +7,7 @@
 # se uma casa não está disponivel ela recebe x ou o (ó)
 #está variavel serve para mais tarde atribuirmos valores
 #e imprimilos
+from random import randint
 
 casa1 = '0'
 casa2 = '0'
@@ -17,6 +18,8 @@ casa6 = '0'
 casa7 = '0'
 casa8 = '0'
 casa9 = '0'
+
+disponivel = 9
 
 # correspondencias no momento sem uso 
 # (mudei a forma com que estava pensando escrever este codigo)
@@ -43,9 +46,22 @@ jogada = int(input('Digite a casa que você que jogar : '))
 # é igual ao i 
 for i in range(1, 10): 
     if jogada == i:
+        casa1 = 'x'
         atual = " {} | {} | {} \n {} | {} | {} \n {} | {} | {} ".format(casa1, casa2, casa3, casa4, casa5, casa6, casa7, casa8, casa9)
         print(atual)
-        break
+        disponivel -= 1
+        computador = randint(1, 9)
+        c = 0
+        while c == 0:
+            if computador == 1:
+                if casa1 != '0':
+                    casa3 == 'o'
+                    atual = " {} | {} | {} \n {} | {} | {} \n {} | {} | {} ".format(casa1, casa2, casa3, casa4, casa5, casa6, casa7, ca    sa8, casa9)
+                    c += 1
+                    print(atual)
+            else:
+                computador = randint(1, 9)
+
 #!!! tenho que colher os dados da casa e valor
 # depois atribuir os dado a sua respectiva variavel casa (que está definida no começo)
 # e depois imprimir estes dados na tela 
