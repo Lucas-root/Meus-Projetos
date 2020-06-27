@@ -2,23 +2,19 @@
 
 echo "Digite o diretorio do arquivo js"
 read arquivo;
-echo $arquivo 
-
-js60 $arquivo > nmude
-SEGUNDA=$(cat nmude)
+PRIMEIRA=$(js60 $arquivo)
+SEGUNDA=$PRIMEIRA
 
 js60 $arquivo
 
 for (( ; ; ))
 do
-	js60 $arquivo > naomecher
-	PRIMEIRA=$(cat naomecher)
+	SEGUNDA=$(js60 $arquivo)
 	if [ "$PRIMEIRA" != "$SEGUNDA" ];
 	then
 		clear
 		js60 $arquivo 
-		js60 $arquivo > nmude
-		SEGUNDA=$(cat nmude)
+		PRIMEIRA=$SEGUNDA
 	fi
 done
 
