@@ -129,11 +129,11 @@ for numero in range(1, 10): # ele vai repetir 9 vezes. O (numero) vai receber de
 	{} | {} | {}
 	'''.format(a, b, c, d, e, f, g, h, i))
 	
-	if jogada >= 3:
+	if jogada >= 3: # apartir de 3 valores na velha ele começa a verificar 
 	
-		if a == vez and b == vez and c == vez:
-			if vez == 'X':
-				print('GANHOU! parabéns você ganhou')
+		if a == vez and b == vez and c == vez: # verificam se qualquer uma das 8 alternativas foi..-
+			if vez == 'X':	#-... atendida se qualquer condição for True ele verifica a variavel vez ...-
+				print('GANHOU! parabéns você ganhou') #...- e imprime quem ganhou
 			elif vez == 'C':
 				print('Ganhei! hehehe eu Ganhei!')
 			break
