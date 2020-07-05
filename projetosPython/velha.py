@@ -130,77 +130,66 @@ for numero in range(1, 10): # ele vai repetir 9 vezes. O (numero) vai receber de
 	'''.format(a, b, c, d, e, f, g, h, i))
 	
 	if jogada >= 3:
-		
-		if a != 0 and b != 0 and c != 0:
-			if a == vez and b == vez and c == vez:
-				if vez == 'X':
-					print('GANHOU! parabéns você ganhou')
-				elif vez == 'C':
-					print('Ganhei! hehehe eu Ganhei!')
-				break
-				
-		if d != 0 and e != 0 and f != 0:
-			if d == vez and e == vez and f == vez:
-				if vez == 'X':
-					print('GANHOU! parabéns você ganhou')
-				elif vez == 'C':
-					print('Ganhei! hehehe eu Ganhei!')
-				break
-				
-		if g != 0 and h != 0 and i != 0:
-			if g == vez and h == vez and i == vez:
-				if vez == 'X':
-					print('GANHOU! parabéns você ganhou')
-				elif vez == 'C':
-					print('Ganhei! hehehe eu Ganhei!')
-				break
-				
-		if a != 0 and d != 0 and g != 0:
-			if a == vez and d == vez and g == vez:
-				if vez == 'X':
-					print('GANHOU! parabéns você ganhou')
-				elif vez == 'C':
-					print('Ganhei! hehehe eu Ganhei!')
-				break
-		
-		if b != 0 and e != 0 and h != 0:
-			if b == vez and e == vez and h == vez:
-				if vez == 'X':
-					print('GANHOU! parabéns você ganhou')
-				elif vez == 'C':
-					print('Ganhei! hehehe eu Ganhei!')
-				break
-		
-		if c != 0 and f != 0 and i != 0:
-			if c == vez and f == vez and i == vez:
-				if vez == 'X':
-					print('GANHOU! parabéns você ganhou')
-				elif vez == 'C':
-					print('Ganhei! hehehe eu Ganhei!')
-				break
+	
+		if a == vez and b == vez and c == vez:
+			if vez == 'X':
+				print('GANHOU! parabéns você ganhou')
+			elif vez == 'C':
+				print('Ganhei! hehehe eu Ganhei!')
+			break
 			
-		if a != 0 and e != 0 and i != 0:
-			if a == vez and e == vez and i == vez:
-				if vez == 'X':
-					print('GANHOU! parabéns você ganhou')
-				elif vez == 'C':
-					print('Ganhei! hehehe eu Ganhei!')
-				break
+		elif d == vez and e == vez and f == vez:
+			if vez == 'X':
+				print('GANHOU! parabéns você ganhou')
+			elif vez == 'C':
+				print('Ganhei! hehehe eu Ganhei!')
+			break
+			
+		elif g == vez and h == vez and i == vez:
+			if vez == 'X':
+				print('GANHOU! parabéns você ganhou')
+			elif vez == 'C':
+				print('Ganhei! hehehe eu Ganhei!')
+			break
+			
+		elif a == vez and d == vez and g == vez:
+			if vez == 'X':
+				print('GANHOU! parabéns você ganhou')
+			elif vez == 'C':
+				print('Ganhei! hehehe eu Ganhei!')
+			break
+	
+		elif b == vez and e == vez and h == vez:
+			if vez == 'X':
+				print('GANHOU! parabéns você ganhou')
+			elif vez == 'C':
+				print('Ganhei! hehehe eu Ganhei!')
+			break
+	
+		elif c == vez and f == vez and i == vez:
+			if vez == 'X':
+				print('GANHOU! parabéns você ganhou')
+			elif vez == 'C':
+				print('Ganhei! hehehe eu Ganhei!')
+			break
 		
-		if c != 0 and e != 0 and g != 0:
-			if c == vez and e == vez and g == vez:
-				if vez == 'X':
-					print('GANHOU! parabéns você ganhou')
-				elif vez == 'C':
-					print('Ganhei! hehehe eu Ganhei!')
-				break
-		
+		elif a == vez and e == vez and i == vez:
+			if vez == 'X':
+				print('GANHOU! parabéns você ganhou')
+			elif vez == 'C':
+				print('Ganhei! hehehe eu Ganhei!')
+			break
+	
+		elif c == vez and e == vez and g == vez:
+			if vez == 'X':
+				print('GANHOU! parabéns você ganhou')
+			elif vez == 'C':
+				print('Ganhei! hehehe eu Ganhei!')
+			break
 		else:
-			print('\nPor enquanto ninguem ganhou\n')
+			print('\nPor enquanto ninguem ganhou!\n')
+			print('Tecle enter para continuar')
 			input()
-	else:
-		print('\nPor enquanto ninguem ganhou\n')
-		input()
 		
 	jogada += 1
 
