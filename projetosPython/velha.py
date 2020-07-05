@@ -1,4 +1,4 @@
-from random import randint 
+from random import randint, choice
 a = 0
 b = 0
 c = 0
@@ -8,8 +8,10 @@ f = 0
 g = 0 
 h = 0 
 i = 0 
-posibilidades = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i']
-jogada = -1
+
+posibilidades = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i'] # para verificar se a entrada do jogador é uma entrada valida
+jogada = -1 # sempre que for par sera a vez do jogador e sempre que for impar do computador
+disponiveis = [] # para o computador sortear entre uma casa disponivel
 
 for i in range(1, 10): # ele vai repetir 9 vezes. O (i) vai receber de 1 até 9
 	
@@ -64,12 +66,20 @@ for i in range(1, 10): # ele vai repetir 9 vezes. O (i) vai receber de 1 até 9
 				elif valor == 'g': g = vez
 				elif valor == 'h': h = vez
 				elif valor == 'i': i = vez
-				break
 				else:
 					print('Algum erro ocorreu')
-					break
-
+				break
+	
 	elif jogada % 2 != 0:
+		if a == 0:
+			disponiveis.append('a')
+		if b == 0:
+			disponiveis.append('b')
+		if c == 0:
+			disponiveis.append('c')
+		if d == 0:
+			disponiveis.append('d')
+		if 
 		aleatorio = randint(1, 9)
 		if aleatorio == 1:
 			valor = 'a'
