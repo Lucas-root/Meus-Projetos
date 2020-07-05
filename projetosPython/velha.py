@@ -18,13 +18,12 @@ h = 0
 i = 0 
 
 posibilidades = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i'] # para verificar se a entrada do jogador é uma entrada valida
-jogada = -1 # sempre que for par sera a vez do jogador e sempre que for impar do computador
+jogada = 0 # sempre que for par sera a vez do jogador e sempre que for impar do computador
 disponiveis = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i'] 
 # sempre que alguem ultiliza umas destas casas a sua letra correspondente é apagada com o metodo .remove
 
 for numero in range(1, 10): # ele vai repetir 9 vezes. O (numero) vai receber de 1 até 9
 	
-	jogada += 1
 	
 	# Obs a variavel (vez) diz se a casa vai receber 'X' ou 'C' e ela é comparatilhada mudando o seu valor conforme
 	# a vez se for jogada for par é a vez do jogador e ela passa a valher 'X' se for impar é a vez da cpu e ela valhe 'C'
@@ -129,6 +128,81 @@ for numero in range(1, 10): # ele vai repetir 9 vezes. O (numero) vai receber de
       -------------
 	{} | {} | {}
 	'''.format(a, b, c, d, e, f, g, h, i))
+	
+	if jogada >= 3:
+		
+		if a != 0 and b != 0 and c != 0:
+			if a == vez and b == vez and c == vez:
+				if vez == 'X':
+					print('GANHOU! parabéns você ganhou')
+				elif vez == 'C':
+					print('Ganhei! hehehe eu Ganhei!')
+				break
+				
+		if d != 0 and e != 0 and f != 0:
+			if d == vez and e == vez and f == vez:
+				if vez == 'X':
+					print('GANHOU! parabéns você ganhou')
+				elif vez == 'C':
+					print('Ganhei! hehehe eu Ganhei!')
+				break
+				
+		if g != 0 and h != 0 and i != 0:
+			if g == vez and h == vez and i == vez:
+				if vez == 'X':
+					print('GANHOU! parabéns você ganhou')
+				elif vez == 'C':
+					print('Ganhei! hehehe eu Ganhei!')
+				break
+				
+		if a != 0 and d != 0 and g != 0:
+			if a == vez and d == vez and g == vez:
+				if vez == 'X':
+					print('GANHOU! parabéns você ganhou')
+				elif vez == 'C':
+					print('Ganhei! hehehe eu Ganhei!')
+				break
+		
+		if b != 0 and e != 0 and h != 0:
+			if b == vez and e == vez and h == vez:
+				if vez == 'X':
+					print('GANHOU! parabéns você ganhou')
+				elif vez == 'C':
+					print('Ganhei! hehehe eu Ganhei!')
+				break
+		
+		if c != 0 and f != 0 and i != 0:
+			if c == vez and f == vez and i == vez:
+				if vez == 'X':
+					print('GANHOU! parabéns você ganhou')
+				elif vez == 'C':
+					print('Ganhei! hehehe eu Ganhei!')
+				break
+			
+		if a != 0 and e != 0 and i != 0:
+			if a == vez and e == vez and i == vez:
+				if vez == 'X':
+					print('GANHOU! parabéns você ganhou')
+				elif vez == 'C':
+					print('Ganhei! hehehe eu Ganhei!')
+				break
+		
+		if c != 0 and e != 0 and g != 0:
+			if c == vez and e == vez and g == vez:
+				if vez == 'X':
+					print('GANHOU! parabéns você ganhou')
+				elif vez == 'C':
+					print('Ganhei! hehehe eu Ganhei!')
+				break
+		
+		else:
+			print('\nPor enquanto ninguem ganhou\n')
+			input()
+	else:
+		print('\nPor enquanto ninguem ganhou\n')
+		input()
+		
+	jogada += 1
 
 print('\nFim do Código\n')
 
