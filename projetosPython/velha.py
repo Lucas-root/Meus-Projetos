@@ -121,13 +121,7 @@ for numero in range(1, 10): # ele vai repetir 9 vezes. O (numero) vai receber de
 		sleep(0.5)
 	
 	# por fim imprime as variaveis com seus respectivos valores organizados na velha
-	print(''' 
-	{} | {} | {}
-      -------------
-	{} | {} | {}
-      -------------
-	{} | {} | {}
-	'''.format(a, b, c, d, e, f, g, h, i))
+	print(' {} | {} | {} \n-----------\n {} | {} | {} \n-----------\n {} | {} | {} '.format(a, b, c, d, e, f, g, h, i))
 	
 	if jogada >= 3: # apartir de 3 valores na velha ele começa a verificar 
 	
