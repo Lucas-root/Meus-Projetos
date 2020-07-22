@@ -19,7 +19,6 @@ while abs((guess ** 2) - numero) >= 0.001:
 		maior = guess
 
 	guess = (maior + menor) / 2
-
 raiz = (maior + menor) / 2
-print('A raiz quadrada de {} é {:.5f}'.format(numero, raiz))
 
+print('A raiz quadrada de {} é {:.5f}'.format(numero, raiz))
