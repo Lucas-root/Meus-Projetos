@@ -39,31 +39,13 @@ estoque = {
 }
 
 print()
+	
+def impressao(dicionario):
+	for chave in dicionario:
+		if type(dicionario[chave]) == dict:
+			print(chave)
+			impressao(dicionario[chave])
+		else:
+			print('\t',chave,':',dicionario[chave])
 
-for item in estoque:
-	print(item.upper())
-	for subp in estoque[item]:
-		print('\t',subp)
-		for subf in estoque[item][subp]:
-			print('\t'*2, subf)
-		print()
-	print()
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+impressao(estoque)
