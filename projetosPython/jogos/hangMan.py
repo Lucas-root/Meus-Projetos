@@ -1,15 +1,26 @@
-# Este é um jogo da forca simples que no momento apenas possui uma palavra
-# mas no futuro adicionarei a funcionalidade para ele escolher uma palavra
-# em uma lista de palavras
+'''
+	By lucasedux0@gmail.com
+'''
+# Este jogo é um Jogo da forca de terminal que escolhe uma palavra de um 
+# arquivo txt
 
+# importa a biblioteca choice (ultilizada para escolher um item de uma lista)
+# depois le o txt salva as suas palvras em uma lista e a variavel palavra recebe
+# um choice da lista de palavras
+from random import choice
 
+arquivo = open('words.txt', 'r')
+lista_palavras = arquivo.read()
+lista_palavras = lista_palavras.split()
+arquivo.close()
 
 alfabeto = 'abcdefghijklmnopqrstuvwxyz'
 disponiveis = alfabeto
-palavra = 'homem'
-letras_disponiveis = palavra
+palavra = choice(lista_palavras) 
+letras_disponiveis = palavra # armazena as letras da palavra que estão disponiveis
 tentativas = 8
-foram = []
+foram = [] # armazena as letras que o usuario já digitou tanto as corretas como as não
+complemento = '' # armazena a string com a formatação correta de foram
 
 # esta variavel armazena no formato {0:['letra_da_pavalra':'_']}
 # a estrutura da forca sendo a key do dict um numero que vai de 0 até o 
@@ -40,23 +51,35 @@ while True:
 		print('A parlavra era : {}\n'.format(palavra))
 		break
 	elif letras_disponiveis == '':
-		print('\nParabéns! você finalizou o jogo!\n')
+		print('\nParabéns! você finalizou o jogo!')
+		print('A palavra completa ficou {}\n'.format(imprime()))
 		break
+	# se foram não estiver vazia complemento recebe as letras que o usuario já 
+	# tentou no formato 'a-b-c-d'...
+	if foram != []:
+		complemento = ''
+		for letra in foram:
+			complemento += str(letra)+'-'
+		if complemento[-1] == '-':
+			complemento = complemento[:(len(complemento)-1)]
 	print('\n'+'-='*20)
-	print('Tentativas :',tentativas)
+	print('Tentativas :',str(tentativas)+'\t\tjá foram : '+complemento)
 	print('Tente acertar a palavra :',imprime())
 	print('\n'+'-='*20)
 
 	letra = input('Digite uma letra : ')
 
+	# true se oque o usuario digitar não for uma letra (por exemplo um simbolo)
+	# obs : ele verifica as letras da variavel (alfabeto) que não é alterada
 	if not letra in alfabeto:
-		print('Está letra já foi! tente outra')
+		print('\nDigite Somente letras!\n')
 		continue
+	elif letra in foram:
+		print('\nEsta letra já foi TENTE OUTRA!')
 	elif not letra in palavra:
 		print('\nEstá palavra não contem está letra')
+		foram.append(letra)
 		tentativas -= 1
-	elif letra in foram:
-		print('Esta letra já foi! Tente outra')
 	
 	# se letra estiver em letras disponiveis ele remove a letra da variavel
 	# letras disponiveis, remove 1 de tentativas, adiciona a letra que o úsuario
