@@ -130,7 +130,7 @@ def main():
 	comeca = escolheSimbolo()	
 	vez = comeca	
 
-	for i in range(9):
+	for i in range(1, 9+1):
 		if vez == 'jogador':
 			vez = 'computador'
 			jogadorEscolhe(simbolo_jogador)
@@ -139,7 +139,9 @@ def main():
 			sleep(0.5)
 			vez = 'jogador'
 			computadorEscolhe(simbolo_computador)
-		if i >= 2:
+		# obs : ele só começa avaliar apartir da 5º jogada (pois somente apartir
+		# da 5º que alguem tera preenchido uma linha
+		if i >= 5:
 			if verificaGanhador() == 'jogador':
 				print('\nPARABÉNS! você venceu!\n')
 				print('Fim de jogo\n')
