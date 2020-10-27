@@ -8,11 +8,12 @@ alfabeto = [
 	'5', '6', '7', '8', '9',
 ]
 
-def criptografa(palavra, descriptografa=False):
+def criptografa(palavra, descriptografa=False, com_seed=False, SEED=1):
 	'''
 	criptografa uma palavra com a tecnica letra>>
 	ex: l = m 
 	se for passado True para o seu parametro, ele decriptografa
+	se com_seed for True ele criptografa apartir da seed
 	'''
 	resultado = ''
 	
@@ -27,20 +28,33 @@ def criptografa(palavra, descriptografa=False):
 		else:
 			index = alfabeto.index(letra)
 			
+
 			if descriptografa:
-				adicionar = alfabeto[index-1]
+				adicionar = alfabeto[index-SEED]
+
 			else:
+				# IMPORTANTE! não confundir o SEED com posicao num array
+				# o SEED se refere a casas 
 				# caso index se refira a ultima letra adicionar recebe a
+				
 				if index == len(alfabeto)-1:
-					adicionar = alfabeto[0]
+					adicionar = alfabeto[SEED-1]
 				else:
-					adicionar = alfabeto[index + 1]
+					#SEED-(len(alfabeto)-1)-1
+					adicionar = alfabeto[(SEED-1)-((len(alfabeto)-1)-index)]
+					'''
+					if index+SEED > len(alfabeto)-1:
+						#(len(alfabeto)-1)-index
+						adicionar = alfabeto[SEED]
+					else:
+						adicionar = alfabeto[index + SEED]
+					'''
 		
 		resultado += adicionar
 	
 	return resultado
 
-def criptografa_documento(path_original, path_final, descriptografa=False):
+def criptografa_documento(path_original, path_final, descriptografa=False, com_seed=False, SEED=1):
 
 	arquivo = open(path_original, 'r')	
 
@@ -51,7 +65,7 @@ def criptografa_documento(path_original, path_final, descriptografa=False):
 		lista_palavras.append(linha)
 
 	for p in lista_palavras:
-		palavras_criptografadas.append(criptografa(p, descriptografa))
+		palavras_criptografadas.append(criptografa(p, descriptografa, com_seed, SEED))
 
 	arquivo.close()
 	arquivo = open(path_final, 'w')
@@ -102,6 +116,34 @@ def main():
 		else:
 			print('\nDigite uma opção valida!')
 	
+	com_seed = False
+	while True:
+		if descriptografar:
+			opcao = input('\nDeseja descriptografar apartir de uma SEED? ("sim/NÃO"): ').lower()
+		else:
+			opcao = input('\nDeseja criptografar apartir de uma SEED? ("sim/NÃO"): ').lower()
+		if opcao not in ('sim', 's', 'nao', 'não', 'n', '', ' '):
+			print('\nDigite um valor valido!')
+			continue
+		break
+
+	if opcao in ('sim', 's'):
+		com_seed = True
+		while True:
+			SEED = input('\nDigite uma SEED: ')
+			if not SEED.isnumeric():
+				print('\nDigite apenas números!')	
+			else:
+				SEED = int(SEED)
+
+				print('SEED antes =', SEED)
+				while SEED > len(alfabeto):
+					SEED -= len(alfabeto)
+				print('SEED depois: ',SEED)
+				break
+	else:
+		SEED = 1
+	
 	while True:
 		# somente para não precisar copiar e colar o bloco duas vezes
 		if descriptografar:
@@ -120,7 +162,7 @@ def main():
 		else:
 			print('\nNão entendi! Tente novamente')
 	# caso seja passado True para descriptografar ele reverte
-	criptografa_documento(arquivo_original, arquivo_final, descriptografar)
+	criptografa_documento(arquivo_original, arquivo_final, descriptografar, com_seed, SEED)
 	print(f'\nSucesso! Operação {operacao} realizada em ({arquivo_original}) e gravada em ({arquivo_final}).')	
 main()
 
