@@ -73,34 +73,80 @@ def criptografa_documento(path_original, path_final, descriptografa=False, com_s
 	for p in palavras_criptografadas:
 		arquivo.write(p)
 
-def main():
-			
+def verifica_arquivos(arquivo):
 	try:
-		arquivo_original = argv[1]
-		try:
-			open(arquivo_original)
-		except:
-			print(f'\nO arquivo_original {arquivo_original} não existe!')
-			raise ValueError()
-		try:
-			arquivo_final = argv[2]
-		except:
-			print('\nNão foi passado o parametro para o arquivo final!')
-			while True:
-				arquivo_final = input('\nDigite o path para o arquivo final: ')
-				if arquivo_final == '':
-					print('\nArquivo invalido! Tente novamente!')
-				else:
-					break
+		open(arquivo)
+		return 0
 	except:
+		return 1
+
+def pega_arquivo_original():
+	while True:
+		arquivo_original = input('\nDigite o path do arquivo_original: ')
+		if verifica_arquivos(arquivo_original) == 0:
+			print('\nEste arquivo não exite! Digite novamente!')
+		else:
+			return arquivo_original 
+
+def pega_arquivo_final():
+	while True:
+		arquivo_final = input('\nDigite o path do arquivo_final: ')
+		if arquivo_final not in ('', ' '):
+			return arquivo_final
+		else:
+			print('\nDigite um valor valido!')
+		
+
+def colhe_informacoes():
+	"""
+	Pega os parametros passados ao executar o arquivo
+	"""
+	# caso não seja passados parametros
+
+	if len(argv) > 3:
+		print('Foram passados argumentos de mais!')	
 		while True:
-			arquivo_original = input('\nDigite o path do arquivo original: ')
-			try:
-				open(arquivo_original)
+			opcao = input(f'\nVocê deseja ultilizar {argv[1]} como arquivo_original? ("SIM"/"não"): ').lower()
+			if opcao in (' ', '', 'sim', 's'):
+				arquivo_original = argv[1]
 				break
-			except FileNotFoundError:
-				print('\nEste arquivo não existe')
-		arquivo_final = input('\nDigite o path do arquivo final (arquivo a ser gravado): ')
+			elif opcao in ('n', 'não', 'nao'):
+				arquivo_original = pega_arquivo_original
+				break
+			else:
+				print('\nNão entendi! Tente novamente!')
+		while True:
+			opcao = input(f'\nVocê deseja ultilizar {argv[2]} como arquivo_final? ("SIM","não"): ').lower()
+			if opcao in ('s', 'sim', '', ' '):
+				arquivo_final = argv[2]
+				break
+			elif opcao in ('n', 'não'):
+				arquivo_final = pega_arquivo_final()
+				break
+			else:
+				print('\nNão entendi! Tente novamente!')
+
+	elif len(argv) > 1:
+		if verifica_arquivos(argv[1]) == 1:
+			print(f'\nO arquivo {argv[1]} não existe!')
+			arquivo_original = pega_arquivo_original()
+		else:
+			arquivo_original = argv[1]
+
+	elif len(argv) == 1:
+		arquivo_original = pega_arquivo_original()
+	
+	if len(argv) == 3:
+		arquivo_final = argv[2]
+	elif len(argv) < 3:
+		arquivo_final = pega_arquivo_final()
+	
+	return arquivo_original, arquivo_final
+
+def main():
+	
+	arquivo_original, arquivo_final = colhe_informacoes()
+
 	while True:
 		print('\nVocê deseja criptografar ou descriptografar o documento?')
 		print('Digite (1) para criptografar')
@@ -164,6 +210,8 @@ def main():
 	# caso seja passado True para descriptografar ele reverte
 	criptografa_documento(arquivo_original, arquivo_final, descriptografar, com_seed, SEED)
 	print(f'\nSucesso! Operação {operacao} realizada em ({arquivo_original}) e gravada em ({arquivo_final}).')	
-main()
+
+if __name__ == '__main__':
+	main()
 
 
